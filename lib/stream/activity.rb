@@ -15,4 +15,8 @@ class Stream::Activity < Stream::Base
   def posts
     @posts ||= EvilQuery::Participation.new(user).posts
   end
+
+  def contacts_title
+    I18n.translate("streams.activity.contacts_title")
+  end
 end

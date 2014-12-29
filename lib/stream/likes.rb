@@ -8,7 +8,7 @@ class Stream::Likes < Stream::Base
   end
 
   def title
-    I18n.translate("streams.like_stream.title")
+    I18n.translate("streams.likes_stream.title")
   end
 
   # @return [ActiveRecord::Association<Post>] AR association of posts
@@ -17,6 +17,6 @@ class Stream::Likes < Stream::Base
   end
 
   def contacts_title
-    I18n.translate('streams.like_stream.contacts_title')
+    I18n.translate("streams.likes_stream.contacts_title")
   end
 end

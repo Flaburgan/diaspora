@@ -21,3 +21,11 @@ end
 Then /^I should have (\d+) nsfw posts$/ do |num_posts|
   page.should have_css(".nsfw-shield", count: num_posts.to_i)
 end
+
+Then /^the stream title should be "(.*?)"$/ do |title|
+  step %(I should see "#{title}" within "#aspect_stream_header")
+end
+
+Then /^the contacts title should be "(.*?)"$/ do |title|
+  step %(I should see "#{title}" within "h5.stream_title")
+end

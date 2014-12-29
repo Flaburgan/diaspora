@@ -102,9 +102,14 @@ var app = {
       evt.preventDefault();
       var link = $(this);
       if(link.data("stream-title") && link.data("stream-title").length) {
-        $(".stream_title").text(link.data("stream-title"));
+        $("h3.stream_title").text(link.data("stream-title"));
       } else {
-        $(".stream_title").text(link.text());
+        $("h3.stream_title").text(link.text());
+      }
+      if(link.data("contacts-title") && link.data("contacts-title").length) {
+        $("h5.stream_title").text(link.data("contacts-title"));
+      } else {
+        $("h5.stream_title").text(link.text());
       }
 
       $("html, body").animate({scrollTop: 0});

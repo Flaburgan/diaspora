@@ -8,7 +8,7 @@ class Stream::Comments < Stream::Base
   end
 
   def title
-    I18n.translate("streams.comment_stream.title")
+    I18n.translate("streams.comments_stream.title")
   end
 
   # @return [ActiveRecord::Association<Post>] AR association of posts
@@ -17,6 +17,6 @@ class Stream::Comments < Stream::Base
   end
 
   def contacts_title
-    I18n.translate('streams.comment_stream.contacts_title')
+    I18n.translate("streams.comments_stream.contacts_title")
   end
 end

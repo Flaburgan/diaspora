@@ -51,7 +51,7 @@
     background: $gray;
   }
 
-  #aspects_list, #tags_list {
+  .inside-list {
     background: $left-navbar-drawer-background;
     li { padding: 0; }
     .entypo-check { visibility: hidden; }
@@ -70,6 +70,17 @@
     }
     .hoverable:hover > .action { visibility: visible; }
   }
+
+  .my-activity {
+    ul {
+      display: none;
+    }
+
+    &:hover ul {
+      display: block;
+    }
+  }
+
 
   #home_user_badge {
     min-height: 90px;

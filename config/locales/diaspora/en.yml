@@ -1301,12 +1301,12 @@ en:
       title: "@Mentions"
       contacts_title: "People who mentioned you"
 
-    comment_stream:
+    comments_stream:
       title: "Commented posts"
       contacts_title: "People whose posts you commented on"
 
-    like_stream:
-      title: "Like stream"
+    likes_stream:
+      title: "Liked posts"
       contacts_title: "People whose posts you like"
 
     followed_tag:
@@ -1329,9 +1329,11 @@ en:
 
     aspects:
       title: "My aspects"
+      contacts_title: "People in your aspect stream"
 
     activity:
       title: "My activity"
+      contacts_title: "People in your activity stream"
   users:
     edit:
       edit_account: "Edit account"

@@ -32,17 +32,28 @@
 
       %ul#stream_selection
         %li{data: {stream: "stream"}}
-          = link_to t("streams.multi.title"), stream_path, rel: "backbone", class: "hoverable"
-        %li{data: {stream: "activity"}}
-          = link_to t("streams.activity.title"), activity_stream_path, rel: "backbone", class: "hoverable"
+          = link_to t("streams.multi.title"), stream_path, :rel => "backbone",
+            :class => "hoverable", "data-contacts-title" => t("streams.multi.contacts_title")
+        %li.my-activity{data: {stream: "activity"}}
+          = link_to t("streams.activity.title"), activity_stream_path, :rel => "backbone",
+            :class => "hoverable", "data-contacts-title" => t("streams.activity.contacts_title")
+          %ul.inside-list
+            %li.hoverable{data: {stream: "liked"}}
+              = link_to t("streams.likes_stream.title"), liked_stream_path, :rel => "backbone",
+                :class => "selectable", "data-contacts-title" => t("streams.likes_stream.contacts_title")
+            %li.hoverable{data: {stream: "commented"}}
+              = link_to t("streams.comments_stream.title"), commented_stream_path, :rel => "backbone",
+                :class => "selectable", "data-contacts-title" => t("streams.comments_stream.contacts_title")
         %li{data: {stream: "mentions"}}
-          = link_to t("streams.mentions.title"), mentioned_stream_path, rel: "backbone", class: "hoverable"
+          = link_to t("streams.mentions.title"), mentioned_stream_path, :rel => "backbone",
+            :class => "hoverable", "data-contacts-title" => t("streams.mentions.contacts_title")
         %li.all_aspects
           = render "aspects/aspect_listings", stream: @stream
         %li.followed-tags-sidebar
           = render "tags/followed_tags_listings"
         %li{data: {stream: "public"}}
-          = link_to t("streams.public.title"), public_stream_path, rel: "backbone", class: "hoverable"
+          = link_to t("streams.public.title"), public_stream_path, :rel => "backbone",
+            :class => "hoverable", "data-contacts-title" => t("streams.public.contacts_title")
 
     .col-md-6
       #aspect_stream_container.stream_container
@@ -54,7 +65,7 @@
       #selected_aspect_contacts.section
         .title
           %h5.stream_title
-            = @stream.title
+            = @stream.contacts_title
         .content
 
       = render 'shared/right_sections'
