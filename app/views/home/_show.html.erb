@@ -1,0 +1,143 @@
+<meta charset='utf-8'>
+
+<style type="text/css">
+* {
+	font-family: "DejaVu Sans","Verdana","Geneva","sans serif" ;
+}
+
+body {
+    background-color:#eee;
+}
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+.lead {
+    font-style:italic;
+}
+.navbar-collapse {
+    padding-right: 0px;
+}
+.buttons {
+    float: right;
+    margin-top: 12px;
+}
+footer .container {
+    margin:0 auto;
+    padding: 0 15px;
+}
+#internav ul {
+    margin-bottom: 10px;
+}
+#internav li a {
+    color: #666;
+    padding: 12px;
+    text-decoration: none;
+}
+#internav li a:hover,
+#internav li a:focus,
+#internav li a.active {
+    background: #767676;
+    color: #fff;
+}
+p[role="presentation"] {
+    text-align:center;
+}
+p[role="presentation"] i.glyphicon {
+    font-size:50px;
+}
+
+#inscription-email {
+    font-size:smaller;
+    max-width:315px;
+    margin:10px auto;
+    padding:5px;
+    background:#eee;
+    color:#616161;
+    border-color:#949494;
+}
+</style>
+
+<script type="text/javascript">
+var script = document.createElement('script');
+    script.type = "text/javascript";
+    script.src="https://n6.framasoft.org/nav/nav.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    jQuery(document).ready(function() {
+        jQuery('link[href*=bootstrap-complete]').remove();
+        jQuery.getJSON( "https://framasphere.org/statistics.json" ).done( function( data ) {
+            jQuery('#userFramasphere').text(data.total_users);
+        });
+    });
+
+</script>
+<div class="row" id="internav">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/users/sign_in">Se connecter</a></li>
+            <li><a href="/users/sign_up">Créer un compte</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container ombre">
+    <header>
+        <h1><b class="frama">Frama</b><b class="vert">sphère</b></h1>
+        <p class="lead">Un réseau social libre, respectueux et décentralisé.</p>
+        <hr class="trait" role="presentation">
+    </header>
+    <div class="row">
+        <div class="col-md-8">
+            <p><img src="https://framasphere.org/screenshots.jpg" alt="" class="img-responsive" style="margin:0 auto"></p>
+            <div class="col-md-6 text-center">
+                <a href="/users/sign_in" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-lock"></i> Se connecter »</a>
+            </div>
+            <div class="col-md-6 text-center">
+                <a href="/users/sign_up" class="btn btn-success btn-lg" aria-describeby="inscription-email"><i class="glyphicon glyphicon-user"></i> Créer un compte »</a>
+                <p id="inscription-email" class="alert text-left">Si vous rencontrez des difficultés pour vous inscrire, notamment à cause du captcha, envoyez un email à inscription-framasphere@framalistes.org contenant l’identifiant que vous souhaitez utiliser.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2 class="h3">Qu'est-ce que c’est&nbsp;?</h2>
+            <p><b class="violet">Frama</b><b class="vert">sphère</b> est un nœud (appelé pod) du réseau social libre Diaspora*.</p>
+            <p>Ses <a href="https://framasphere.org/statistics" id="userFramasphere">20 000</a> utilisateurs peuvent communiquer avec les ~<a href="http://the-federation.info/">600 000</a> que compte l’ensemble du réseau.</p>
+
+            <h2 class="h3">Pourquoi utiliser Framasphère ?</h2>
+            <p>Depuis <b class="violet">Frama</b><b class="vert">sphère</b>, vous pouvez&nbsp;:</p>
+            <ul>
+                <li>échanger des messages et photos avec n'importe quelle autre personne du réseau Diaspora*</li>
+                <li>gérer vos contacts, tags, mentions, repartages…</li>
+                <li>garder le contrôle de vos données</li>
+                <li>publier sur d'autres réseaux sociaux (Twitter, Tumblr ou Wordpress)</li>
+                <li>en somme, apprécier toutes les fonctionnalités d'un réseau social sans craindre la censure et dans le respect de votre vie privée</li>
+            </ul>
+
+        </div>
+    </div>
+    <hr role="presentation" />
+	<div class="row">
+        <div class="col-md-4">
+            <h2>Prise en main</h2>
+            <p role="presentation" ><i class="glyphicon glyphicon-question-sign"></i></p>
+            <p>L'interface est globalement intuitive mais il y a quelques différences par rapport aux autres réseaux sociaux qui peuvent être déroutantes au début.</p>
+            <p>Si vous avez besoin d'un coup de main c'est par là&nbsp;:</p>
+            <p class="text-center"><a href="help" class="btn btn-primary">Aide »</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Le logiciel</h2>
+            <p role="presentation"><i class="glyphicon glyphicon-cloud"></i></p>
+            <p><b class="violet">Frama</b><b class="vert">sphère</b> repose sur le logiciel libre <a href="https://diasporafoundation.org">Diaspora*</a></p>
+            <p>Il est compatible avec la majorité des navigateurs web et ne requiert aucune installation spécifique pour être utilisé sur mobile.</p>
+            <p>Il est sous <a href="https://github.com/diaspora/diaspora/blob/develop/COPYRIGHT">licence <abbr title="GNU Affero General Public License" class="initialism">AGPL</abbr></a>.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Cultivez votre jardin</h2>
+            <p role="presentation"><i class="glyphicon glyphicon-tree-deciduous"></i></p>
+            <p>Pour participer au développement du logiciel ou proposer des améliorations, rendez-vous sur <a href="https://github.com/diaspora/diaspora">le site de développement</a>.</p>
+            <br />
+            <p>Si vous souhaitez installer ce logiciel pour votre propre usage et ainsi gagner en autonomie, la communauté Diaspora* vous aide sur :</p>
+            <p class="text-center"><a href="https://wiki.diasporafoundation.org/Installation" class="btn btn-primary">wiki.diasporafoundation.org</a></p>
+        </div>
+    </div>
+</div>
+
