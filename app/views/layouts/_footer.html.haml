@@ -4,3 +4,17 @@
       = link_to t("layouts.application.powered_by"), "https://diasporafoundation.org"
     %ul#footer_nav.pull-right
       = render partial: "shared/links"
+      
+:javascript
+  var _paq = _paq || [];
+
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+      var u="https://framasphere.org/piwik/";
+      _paq.push(["setTrackerUrl", u+"piwik.php"]);
+      _paq.push(["setSiteId", "26"]);
+      var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+      g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
