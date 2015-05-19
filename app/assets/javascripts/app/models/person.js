@@ -11,21 +11,19 @@ app.models.Person = Backbone.Model.extend({
   },
 
   isSharing: function() {
-    var rel = this.get('relationship');
-    return (rel === 'mutual' || rel === 'sharing');
+    return this.get('current_user_shares_with');
   },
 
   isReceiving: function() {
-    var rel = this.get('relationship');
-    return (rel === 'mutual' || rel === 'receiving');
+    return this.get('is_sharing_with_current_user');
   },
 
   isMutual: function() {
-    return (this.get('relationship') === 'mutual');
+    return this.isSharing() && this.isReceiving();
   },
 
   isBlocked: function() {
-    return (this.get('relationship') === 'blocked');
+    return this.get('block');
   },
 
   block: function() {

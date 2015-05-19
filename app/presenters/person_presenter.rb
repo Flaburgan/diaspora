@@ -9,7 +9,9 @@ class PersonPresenter < BasePresenter
 
   def full_hash
     base_hash.merge({
-      relationship: relationship,
+      current_user_shares_with: current_user_shares_with_person,
+      contact: @presentable.shares_with(current_user),
+      is_sharing_with_current_user: person_is_sharing_with_current_user,
       block: is_blocked? ? BlockPresenter.new(current_user_person_block).base_hash : false,
       contact: (!own_profile? && has_contact?) ? { id: current_user_person_contact.id } : false,
       is_own_profile: own_profile?
@@ -27,7 +29,7 @@ class PersonPresenter < BasePresenter
   def as_json(options={})
     attrs = full_hash_with_avatar
 
-    if own_profile? || person_is_following_current_user
+    if own_profile? || person_is_sharing_with_current_user
       attrs.merge!({
                       :location => @presentable.location,
                       :birthday => @presentable.formatted_birthday,
@@ -55,9 +57,15 @@ class PersonPresenter < BasePresenter
       contact.public_send("#{status}?")
     end || :not_sharing
   end
+  
+  def current_user_shares_with_person
+    contact = @presentable.shares_with(current_user)
+    return contact != nil && contact.sharing
+  end
 
-  def person_is_following_current_user
-    @presentable.shares_with(current_user)
+  def person_is_sharing_with_current_user
+    contact = @presentable.shares_with(current_user)
+    return contact != nil && contact.receiving
   end
 
   private
