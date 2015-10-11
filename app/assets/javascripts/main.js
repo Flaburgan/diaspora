@@ -34,6 +34,7 @@
 //= require highlightjs
 //= require clear-form
 //= require typeahead.js
+//= require salvattore
 //= require app/app
 //= require diaspora
 //= require_tree ./helpers

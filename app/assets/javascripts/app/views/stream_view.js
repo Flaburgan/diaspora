@@ -11,6 +11,8 @@ app.views.Stream = app.views.InfScroll.extend({
     this.setupNSFW();
     this.setupInfiniteScroll();
     this.markNavSelected();
+
+    this.$el.attr("data-columns", "");
   },
 
   postClass : app.views.StreamPost,
