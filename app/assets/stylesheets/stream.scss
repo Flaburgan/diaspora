@@ -3,8 +3,31 @@ body.page-streams, body.page-photos {
 }
 
 .stream_container {
-  #publisher {
-    margin-bottom: 15px;
-  }
   .well#ignore-info { text-align: center; }
+
+  .stream-title {
+    margin: 12px 0;
+  }
+}
+
+.main-stream-publisher {
+  margin-bottom: 20px;
+  padding: 0;
+
+  .col-md-2,
+  .col-md-10 {
+    padding: 0;
+  }
+
+  h4 {
+    line-height: 25px;
+    margin: 0 0 0 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a {
+      color: $black;
+      font-weight: normal;
+    }
+  }
 }

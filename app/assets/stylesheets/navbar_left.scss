@@ -51,7 +51,8 @@
     background: $gray;
   }
 
-  #aspects_list, #tags_list {
+  #aspects_list,
+  #tags_list {
     background: $left-navbar-drawer-background;
     li { padding: 0; }
     .entypo-check { visibility: hidden; }
@@ -69,30 +70,6 @@
       visibility: hidden;
     }
     .hoverable:hover > .action { visibility: visible; }
-  }
-
-  #home_user_badge {
-    min-height: 90px;
-    padding: 20px;
-    margin: 0 -15px;
-
-    .avatar {
-      float: left;
-      height: 50px;
-      width: 50px;
-    }
-
-    h4 {
-      margin: 0 0 0 60px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 25px;
-
-      a {
-        color: $black;
-        font-weight: normal;
-      }
-    }
   }
 
   #tags_list {
@@ -137,7 +114,7 @@
   }
 
   .info-bar {
-    margin-top: 20px;
+    margin-top: 25px;
 
     .section {
       margin-bottom: 20px;
@@ -146,11 +123,8 @@
         border-bottom: 1px solid $border-grey;
         padding-bottom: 5px;
 
-        &.no_icon { padding-left: 8px; }
-
         h5 {
           color: $text-dark-grey;
-          font-weight: normal;
           font-size: $font-size-base;
           margin: 0;
         }
@@ -162,7 +136,10 @@
         line-height: 18px;
         padding: 10px 0;
 
-        p, ul { margin: 0; }
+        p,
+        ul {
+          margin: 0;
+        }
 
         ul {
           margin-bottom: 5px;
@@ -175,33 +152,36 @@
           padding-left: 0;
         }
 
-        & > #invite_code {
+        > #invite_code {
           box-sizing: border-box;
           font-size: $font-size-small;
           height: 30px;
           width: 100%;
         }
 
-        & > #right_service_icons {
-          text-align: center;
+        > .right-service-icons {
           padding: 10px {
             bottom: 0;
-          };
-          .social_media_logos-facebook-24x24,
-          .social_media_logos-twitter-24x24,
-          .social_media_logos-tumblr-24x24,
-          .social_media_logos-wordpress-24x24 {
+          }
+          text-align: center;
+
+          .social-media-logos-facebook-24x24,
+          .social-media-logos-twitter-24x24,
+          .social-media-logos-tumblr-24x24,
+          .social-media-logos-wordpress-24x24 {
             height: 24px;
             width: 24px;
           }
+
           a {
             display: inline-block;
           }
         }
-        .stream-faces{
+
+        .stream-faces {
           display: flex;
           flex-flow: row wrap;
-          img{ margin: 1px; }
+          img { margin: 1px; }
         }
       }
     }
