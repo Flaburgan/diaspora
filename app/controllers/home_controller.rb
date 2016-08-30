@@ -20,7 +20,7 @@ class HomeController < ApplicationController
     elsif partial_dir.join("_show.html.haml").exist? ||
           partial_dir.join("_show.html.erb").exist? ||
           partial_dir.join("_show.haml").exist?
-      render :show
+      render :show, layout: "application"
     elsif Role.admins.any?
       render :default
     else
