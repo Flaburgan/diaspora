@@ -7,6 +7,7 @@
 
 body {
     background-color:#eee;
+		margin: 0;
 }
 h1 {
     font-size: 48px;
@@ -72,20 +73,19 @@ var script = document.createElement('script');
     });
 
 </script>
-<div class="row" id="internav">
-    <div class="container">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/users/sign_in">Se connecter</a></li>
-            <li><a href="/users/sign_up">Créer un compte</a></li>
-        </ul>
-    </div>
-</div>
 <div class="container ombre">
-    <header>
-        <h1><b class="frama">Frama</b><b class="vert">sphère</b></h1>
-        <p class="lead">Un réseau social libre, respectueux et décentralisé.</p>
-        <hr class="trait" role="presentation">
-    </header>
+	<div class="container-fluid">
+      <div class="row">
+		    <header class="col-md-8">
+		        <h1><b class="frama">Frama</b><b class="vert">sphère</b></h1>
+		        <p class="lead">Un réseau social libre, respectueux et décentralisé.</p>
+		    </header>
+        <div class="col-md-4 login-form">
+          <%= render partial: "sessions/form", locals: {mobile: false, resource: User.new, resource_name: :user}%>
+        </div>
+      </div>
+		</div>
+		<hr class="trait" role="presentation">
     <div class="row">
         <div class="col-md-8">
             <p><img src="https://framasphere.org/screenshots.jpg" alt="" class="img-responsive" style="margin:0 auto"></p>
@@ -140,4 +140,3 @@ var script = document.createElement('script');
         </div>
     </div>
 </div>
-
