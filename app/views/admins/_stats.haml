@@ -2,7 +2,7 @@
   %h1= t(".usage_statistic")
 
   .row
-    = form_tag("/admins/stats", method: "get", class: "form-inline segement-selection") do
+    = form_tag("/admins/stats", method: "get", class: "form-inline segment-selection") do
       .col-md-2.col-md-push-9
         %select.form-control{name: "range"}
           %option{value: "daily", selected: ("selected" if params[:range] == "daily")}
