@@ -1,9 +1,12 @@
+- content_for :head do
+  = stylesheet_link_tag :admin
+
 .col-md-9
   %h1= t(".usage_statistic")
 
   .row
     = form_tag("/admins/stats", method: "get", class: "form-inline segment-selection") do
-      .col-md-2.col-md-push-9
+      .col-sm-2.col-sm-push-8
         %select.form-control{name: "range"}
           %option{value: "daily", selected: ("selected" if params[:range] == "daily")}
             = t(".daily")
@@ -13,11 +16,11 @@
             = t(".2weeks")
           %option{value: "month", selected: ("selected" if params[:range] == "month")}
             = t(".month")
-      .col-md-1.col-md-push-9
+      .col-sm-2.col-sm-push-8
         = submit_tag t(".go"), class: "btn btn-primary btn-block"
 
-    .col-md-9.col-md-pull-3
-      %h3
+    .col-sm-8.col-sm-pull-4
+      %h4
         != t("admins.stats.display_results", segment: content_tag(:strong, @segment))
 
   .row
