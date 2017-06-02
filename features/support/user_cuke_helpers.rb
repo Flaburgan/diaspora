@@ -15,6 +15,10 @@ module UserCukeHelpers
     user
   end
 
+  def make_admin(user)
+    Role.add_admin(user)
+  end
+
   # create the default testing aspects for a given user
   def add_standard_aspects(user)
     user.aspects.create(:name => "Besties")
