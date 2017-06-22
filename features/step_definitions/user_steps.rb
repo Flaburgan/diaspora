@@ -27,7 +27,7 @@ end
 
 Given /^an admin with email "([^\"]*)"$/ do |email|
   user = create_user(email: email)
-  make_admin(user)
+  Role.add_admin(user)
 end
 
 Given /^(?:|[tT]hat )?following user[s]?(?: exist[s]?)?:$/ do |table|

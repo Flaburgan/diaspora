@@ -4,7 +4,7 @@ Feature: Navigate between pages using the header menu and the drawer
   I want to be able navigate between the pages of the mobile version
 
   Background:
-    Given an admin with email "alice@alice.alice"
+    Given a user with email "alice@alice.alice"
     And I sign in as "alice@alice.alice" on the mobile website
 
   Scenario: navigate to the stream page
@@ -107,6 +107,8 @@ Feature: Navigate between pages using the header menu and the drawer
     Then I should be on my account settings page
 
   Scenario: navigate to the admin pages
+    Given an admin with email "bob@bob.bob"
+    And I sign in as "bob@bob.bob" on the mobile website
     When I open the drawer
     Then I should not see "Dashboard" within "#drawer"
     When I click on "Admin" in the drawer
