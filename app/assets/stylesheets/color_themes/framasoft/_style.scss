@@ -1,3 +1,16 @@
+$frama-bg: #fafafa;
+
+//== Navbar
+$navbar-inverse-bg: $frama-bg;
+$navbar-inverse-link-color: #555555;
+$navbar-inverse-link-hover-color: #333333;
+$navbar-inverse-brand-hover-color: #333333;
+$navbar-inverse-brand-hover-color: $navbar-inverse-link-hover-color;
+
+
+$list-group-bg: $frama-bg;
+$list-group-hover-bg: #677835;
+
 /* Global */
 .btn-primary {
   background-color: #6a5687 !important;
@@ -55,14 +68,7 @@
 
 /* Header */
 .navbar-fixed-top {
-  background-color: #FAFAFA !important;
   #navbar-collapse {
-    a {
-      color: #555555;
-      &:hover {
-        color: #333333;
-      }
-    }
     #notification-dropdown .dropdown-menu {
       .notifications .media .media-body {
         a {
@@ -74,7 +80,7 @@
         }
       }
       .view_all {
-        background-color: #8E9C48;
+        background-color: #8E9C48 !important;
       }
     }
   }
