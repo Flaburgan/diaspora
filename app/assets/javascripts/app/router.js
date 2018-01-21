@@ -25,6 +25,7 @@ app.Router = Backbone.Router.extend({
     "posts/:id(/)": "singlePost",
     "profile/edit(/)": "settings",
     "public(/)": "stream",
+    "popular(/)": "stream",
     "stream(/)": "stream",
     "tags/:name(/)": "followed_tags",
     "u/:name(/)": "profile",

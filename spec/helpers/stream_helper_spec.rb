@@ -20,6 +20,8 @@ describe StreamHelper, type: :helper do
       expect(helper.next_page_path).to include "/public"
     end
 
+    # TODO, popular_stream
+
     it "works for stream page when current page is stream" do
       allow(helper).to receive(:current_page?).and_return(false)
       expect(helper).to receive(:current_page?).with(:stream).and_return(true)

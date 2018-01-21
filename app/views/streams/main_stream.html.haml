@@ -43,6 +43,8 @@
             = render "tags/followed_tags_listings"
           %li{data: {stream: "public"}}
             = link_to t("streams.public.title"), public_stream_path, rel: "backbone", class: "hoverable"
+          %li{data: {stream: "public"}}
+            = link_to t("streams.popular.title"), popular_stream_path, rel: "backbone", class: "hoverable"
 
       .sidebar.info-bar.hidden-xs
         - if AppConfig.settings.invitations.open?

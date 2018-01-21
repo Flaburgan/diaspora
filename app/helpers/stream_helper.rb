@@ -40,6 +40,8 @@ module StreamHelper
       mentioned_stream_path(max_time: time_for_scroll(@stream))
     elsif current_page?(:followed_tags_stream)
       followed_tags_stream_path(max_time: time_for_scroll(@stream))
+    elsif current_page?(:popular_stream)
+      popular_stream_path(max_time: time_for_scroll(@stream))
     else
       raise "in order to use pagination for this new stream, update next_stream_path in stream helper"
     end

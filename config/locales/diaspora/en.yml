@@ -1173,6 +1173,9 @@ en:
     public:
       title: "Public activity"
 
+    popular:
+      title: "Popular"
+
     multi:
       title: "Stream"
 

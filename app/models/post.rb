@@ -50,6 +50,12 @@ class Post < ApplicationRecord
 
   scope :all_public, -> { where(public: true) }
 
+  scope :popular, -> {
+    where(public: true).order("(likes_count + 2 * comments_count + 4 * reshares_count)"\
+    " / ln(EXTRACT(epoch from CURRENT_TIMESTAMP) - EXTRACT(epoch from created_at) "\
+    " + EXTRACT(epoch from CURRENT_TIMESTAMP) - EXTRACT(epoch from interacted_at)) DESC")
+  }
+
   scope :commented_by, ->(person)  {
     select('DISTINCT posts.*')
       .joins(:comments)
