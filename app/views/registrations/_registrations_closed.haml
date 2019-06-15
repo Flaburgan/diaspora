@@ -1,4 +1,11 @@
 %h2
-  Les inscriptions sur diaspora-fr sont fermées 
+  = t("devise.shared.links.sign_up_closed")
 
-Vous pouvez rejoindre le réseau diaspora en vous enregistrant sur <a href="https://framasphere.org">Framasphère</a>, le noeud diaspora* maintenu par l'association <a href="https://framasoft.org">Framasoft</a>.
+!= t("registrations.closed.closed_pod",
+  wiki: link_to(t("registrations.closed.another_pod"), "https://diasporafoundation.org/getting_started/sign_up"))
+
+!= t("registrations.closed.find_pods",
+  poduptime: link_to("Poduptime", "https://diaspora.podupti.me/"))
+
+!= t("registrations.closed.other_questions",
+  wiki: link_to("Wiki", "https://wiki.diasporafoundation.org/Choosing_a_pod"))
