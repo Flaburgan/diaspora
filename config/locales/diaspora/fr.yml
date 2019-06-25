@@ -1078,6 +1078,13 @@ fr:
       terms_link: "conditions d'utilisation"
       username: "Nom d’utilisateur"
   report:
+    modal:
+      title: "Vous êtes sur le point d'envoyer un email à tous les modérateurs de %{pod_name}"
+      report_only_if_violated_terms: "Vous devez signaler uniquement les contenus qui enfreignent"
+      terms_link: "les conditions d'utilisation de %{pod_name}"
+      you_can_blocK: "Si le contenu n'est pas interdit mais que vous ne voulez pas le voir, vous pouvez bloquer son auteur depuis sa page de profil."
+      reason_label: "Veuillez indiquer ci-dessous pourquoi ce contenu enfreint les règles :"
+      submit: "Signaler ce contenu"
     comment_label: "<strong>Commentaire</strong>: %{data}"
     confirm_deletion: "Etes vous vraiment sur de vouloir supprimer cet élément ?"
     delete_link: "Supprimer l’élément"
