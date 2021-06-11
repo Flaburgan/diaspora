@@ -9,6 +9,10 @@ class RegistrationsController < Devise::RegistrationsController
 
   layout -> { request.format == :mobile ? "application" : "with_header_with_footer" }
 
+  def create_or_import
+    render "registrations/create_or_import"
+  end
+
   def create
     @user = User.build(user_params)
 
