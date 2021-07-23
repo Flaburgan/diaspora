@@ -311,6 +311,9 @@ class User < ApplicationRecord
   ######### Data export ##################
   mount_uploader :export, ExportedUser
 
+  ######### Photo export ##################
+  mount_uploader :exported_photos_file, ExportedPhotos
+
   def queue_export
     update exporting: true, export: nil, exported_at: nil
     Workers::ExportUser.perform_async(id)
@@ -603,6 +606,10 @@ class User < ApplicationRecord
 
   def remember_me
     true
+  end
+
+  def account_migration_pending?
+    importing || importing_photos
   end
 
   private
