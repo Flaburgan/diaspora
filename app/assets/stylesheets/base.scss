@@ -121,3 +121,19 @@ pre { word-wrap: break-word; }
 .badge-important {
   background-color: $red;
 }
+
+.card {
+  background-color: $framed-background;
+  border: 1px solid $border-grey;
+  box-shadow: $card-shadow;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  padding: 15px;
+
+  .card-title {
+    border-bottom: 1px dashed $border-grey;
+    font-weight: bold;
+    margin: 0 0 15px;
+    padding-bottom: 10px;
+  }
+}

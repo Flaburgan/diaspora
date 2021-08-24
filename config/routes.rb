@@ -128,6 +128,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: :sessions}, skip: :registration
   devise_scope :user do
     get "/users/create_or_import" => "registrations#create_or_import", :as => :create_or_import
+    get "/users/migrate" => "registrations#migrate", :as => :migrate
     get "/users/sign_up" => "registrations#new",    :as => :new_user_registration
     post "/users"        => "registrations#create", :as => :user_registration
     get "/registrations_closed" => "registrations#registrations_closed", :as => :registrations_closed

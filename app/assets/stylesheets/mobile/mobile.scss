@@ -18,6 +18,7 @@
 @import 'mobile/openid_connect_error_page';
 @import 'markdown-editor';
 @import 'mobile/markdown_editor';
+@import 'mobile/registration';
 
 @import 'typography';
 
@@ -43,6 +44,22 @@ textarea {
 h3 {  margin-top: 0; }
 .clear { clear: both; }
 #main { padding: 56px 10px 0 10px; }
+
+.card {
+  background-color: $framed-background;
+  border: 1px solid $border-grey;
+  box-shadow: $card-shadow;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  padding: 15px;
+
+  .card-title {
+    border-bottom: 1px dashed $border-grey;
+    font-weight: bold;
+    margin: 0 0 15px;
+    padding-bottom: 10px;
+  }
+}
 
 .avatar {
   border-radius: 4px;

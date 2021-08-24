@@ -3,7 +3,16 @@
     .row
       .col-sm-6.hidden-xs
         .ball
-      .col-sm-6.col-xs-12.v-center
+      .col-sm-6.col-xs-12
+        %section
+          %h1
+            Several websites, one network
+          %p
+            Diaspora* is a network of servers called "pods". With only one account, you will be able to share with every other diaspora* users, no matter the pod they are registered on.
+          %p
+            You already have an account on another pod and want to make diaspora-fr.org your new home?
+            %a{:href => "/"}
+              Migrate your existing account.
         .content.text-center
           %h1#pod-name
             = AppConfig.settings.pod_name

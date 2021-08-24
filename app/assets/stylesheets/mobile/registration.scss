@@ -1,0 +1,37 @@
+.page-registrations {
+  &.action-create_or_import {
+    background-color: $main-background;
+
+    .container {
+      padding: 0;
+    }
+
+    .intro {
+      background-color: $framed-background;
+      border-bottom: 1px solid $border-grey;
+      box-shadow: $card-shadow;
+
+      .container {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 21px;
+        margin-top: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .card h2:first-child {
+      font-size: 17px;
+      margin-top: 0;
+    }
+
+    .btn {
+      font-weight: bold;
+    }
+  }
+}

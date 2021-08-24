@@ -1,13 +1,6 @@
 .page-home {
   background-color: $main-background;
 
-  h3 {
-    border-bottom: 1px dashed $border-grey;
-    font-weight: bold;
-    margin: 0 0 15px;
-    padding-bottom: 15px;
-  }
-
   .container-fluid.home-user {
     padding-bottom: 75px;
     padding-top: 75px;
@@ -32,14 +25,8 @@
     }
   }
 
-  .landing-info-card {
-    background-color: $framed-background;
-    border: 1px solid $border-grey;
-    box-shadow: $card-shadow;
-    margin-bottom: 25px;
-    margin-top: 25px;
+  .card {
     min-height: 150px;
-    padding: 15px;
   }
 
   .part-of-diaspora {

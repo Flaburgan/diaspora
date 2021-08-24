@@ -51,4 +51,27 @@
     color: inherit;
     text-decoration: underline;
   }
+
+  &.action-create_or_import {
+    background-color: $main-background;
+
+    .intro {
+      background-color: $framed-background;
+      border-bottom: 1px solid $border-grey;
+      box-shadow: $card-shadow;
+
+      .container {
+        padding: 15px;
+      }
+    }
+
+    .card h2:first-child {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    .btn {
+      font-size: 16px;
+    }
+  }
 }
