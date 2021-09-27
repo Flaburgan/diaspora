@@ -2,6 +2,18 @@
 -#   licensed under the Affero General Public License version 3 or later.  See
 -#   the COPYRIGHT file.
 
+.alert.alert-dismissible.alert-warning{:role => "alert", :aria_live => "polite", :aria_atomic => "true"}
+  %button.close{:type => "button", :aria_label => "Fermer"} ×
+  %div
+    %p.text-center
+      %b Attention : Framasphere ferme le 7 octobre 2021.
+      Pensez à récupérer vos données ! Toutes les infos
+      %a{:href => "https://framasphere.org/posts/b98c419062de0139f7062a0000053625"} sur ce post.
+    %p.text-center
+      %b Warning: Framasphere will be closed on Oct. 7, 2021.
+      Please save and export your data! More info
+      %a{:href => "https://framasphere.org/posts/b98c419062de0139f7062a0000053625"} here.
+
 - if user_signed_in?
   .container-fluid.main-stream-publisher
     .pull-left.hidden-xs
