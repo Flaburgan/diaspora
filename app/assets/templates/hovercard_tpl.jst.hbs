@@ -10,7 +10,11 @@
     <div class="handle">{{diaspora_id}}</div>
     {{{sharingMessage this}}}
   </div>
+  {{#if block}}
+  <a href="#" id="unblock_user_button" class="btn btn-danger">{{t 'people.stop_ignoring'}}</a>
+  {{else}}
   <div id="hovercard_dropdown_container"></div>
+  {{/if}}
   <div class="card-footer">
     <div class="footer-container">
       <div class="hashtags">

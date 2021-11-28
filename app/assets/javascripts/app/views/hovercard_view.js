@@ -9,7 +9,8 @@ app.views.Hovercard = app.views.Base.extend({
   },
 
   events: {
-    'mouseleave': '_mouseleaveHandler'
+    'mouseleave': '_mouseleaveHandler',
+    "click #unblock_user_button": "unblock"
   },
 
   initialize: function() {
@@ -141,5 +142,10 @@ app.views.Hovercard = app.views.Base.extend({
       event.pageY >= elPos.top &&
       event.pageY <= elPos.top + element.height();
   },
+
+  unblock: function() {
+    var personModel = new app.models.Person(this.person);
+    personModel.unblock();
+  }
 });
 // @license-end

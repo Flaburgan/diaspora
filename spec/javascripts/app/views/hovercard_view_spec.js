@@ -56,7 +56,7 @@ describe("app.views.Hovercard", function() {
         expect(jQuery.ajax).toHaveBeenCalledWith("undefined/hovercard.json", {preventGlobalErrorHandling: true});
       });
 
-      it("creates the aspect dropdown", function() {
+      it("creates the aspect dropdown if the person isn't blocked", function() {
         this.view._populateHovercard();
         jasmine.Ajax.requests.mostRecent().respondWith({
           status: 200,
@@ -67,6 +67,24 @@ describe("app.views.Hovercard", function() {
           })
         });
         expect(this.view.aspectMembershipDropdown).not.toEqual(undefined);
+      });
+
+      it("creates the unblock button is the person is blocked", function() {
+        this.view._populateHovercard();
+        jasmine.Ajax.requests.mostRecent().respondWith({
+          status: 200,
+          responseText: JSON.stringify({
+            id: 1337,
+            guid: "ba64fce01b04013aa8db34c93d7886ce",
+            name: "Edward Snowden",
+            relationship: "not_sharing",
+            block: {
+              id: 1337
+            }
+          })
+        });
+        expect(this.view.aspectMembershipDropdown).toEqual(undefined);
+        expect(this.view.aspectMembershipDropdown).toEqual(undefined);
       });
 
       it("renders tags properly", function() {
