@@ -20,7 +20,13 @@ module Notifications
 
         model
           .create_notification(recipient, mention, actor)
-          .try(:email_the_user, mention, actor)
+
+        recipient.mail(
+          Mail::MentionedWorker,
+          recipient.id,
+          actor.id,
+          mention.id
+        )
       end
     end
 

@@ -2,10 +2,6 @@
 
 module Notifications
   class StartedSharing < Notification
-    def mail_job
-      Mail::StartedSharingWorker
-    end
-
     def popup_translation_key
       "notifications.started_sharing"
     end

@@ -18,9 +18,19 @@ module Notifications
         recipient = mention.person.owner
         next if model.exists?(recipient: recipient, target: mention)
 
-        model
-          .create_notification(recipient, mention, actor)
-          .try(:email_the_user, mention, actor)
+        model.create_notification(recipient, mention, actor)
+
+        shareable = mentionable.parent
+
+        mail_job = if NotificationSettingsService.new(recipient).email_enabled?(:mentioned_in_comment)
+                     Mail::MentionedInCommentWorker
+                   elsif shareable.author.owner_id == recipient.id
+                     Mail::CommentOnPostWorker
+                   elsif shareable.participants.local.where(owner_id: recipient.id)
+                     Mail::AlsoCommentedWorker
+                   end
+
+        recipient.mail(mail_job, recipient.id, actor.id, mention.id)
       end
     end
 
