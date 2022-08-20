@@ -10,7 +10,7 @@ module Notifications
       Notifications::Reshared
         .concatenate_or_create(recipient, reshare.root, actor)
 
-      recipient.mail(
+      NotificationService.new(recipient).mail(
         Mail::ResharedWorker,
         recipient.id,
         actor.id,

@@ -8,7 +8,7 @@ module Notifications
       Notifications::ContactsBirthday
         .create_notification(recipient, actor, actor)
 
-      recipient.mail(
+      NotificationService.new(recipient).mail(
         Mail::ContactsBirthdayWorker,
         recipient.id,
         actor.id,

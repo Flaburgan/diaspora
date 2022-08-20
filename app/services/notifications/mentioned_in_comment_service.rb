@@ -30,7 +30,12 @@ module Notifications
                      Mail::AlsoCommentedWorker
                    end
 
-        recipient.mail(mail_job, recipient.id, actor.id, mention.id)
+        NotificationService.new(recipient).mail(
+          mail_job,
+          recipient.id,
+          actor.id,
+          mention.id
+        )
       end
     end
 

@@ -12,7 +12,7 @@ module Notifications
       Notifications::LikedComment
         .concatenate_or_create(recipient, like.target, actor)
 
-      recipient.mail(
+      NotificationService.new(recipient).mail(
         Mail::LikedCommentWorker,
         recipient.id,
         actor.id,

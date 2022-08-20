@@ -8,7 +8,7 @@ module Notifications
       Notifications::StartedSharing
         .create_notification(recipient, sender, sender)
 
-      recipient.mail(
+      NotificationService.new(recipient).mail(
         Mail::StartedSharingWorker,
         recipient.id,
         sender.id,

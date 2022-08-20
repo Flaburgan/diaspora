@@ -348,15 +348,6 @@ class User < ApplicationRecord
   end
 
   ######### Mailer #######################
-  def mail(job, *args)
-    return unless job.present?
-
-    pref = job.to_s.gsub("Mail::", "").underscore.sub(/_worker\z/, "")
-    email_enabled = (disable_mail == false) &&
-      NotificationSettingsService.new(self).email_enabled?(pref)
-
-    job.perform_async(*args) if email_enabled
-  end
 
   def send_confirm_email
     return if unconfirmed_email.blank?
