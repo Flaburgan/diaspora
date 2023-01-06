@@ -21,7 +21,7 @@
               <label for="user_email"><%= t("registrations.new.email") %></label>
             </p>
             <p>
-              <input type="email" id="user_email" name="user[email]" value="<%= @user.email %>" class="form-control" required />
+              <input type="email" id="user_email" name="user[email]" value="<%= @user.email %>" class="form-control" pattern="^(?!.*hotmails)(?!.*cleardex).*$" required />
             </p>
             <p class="advice"><%= t("registrations.new.email_advice") %></p>
           </section>
