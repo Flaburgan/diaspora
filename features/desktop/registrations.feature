@@ -22,6 +22,20 @@ Feature: New user registration
     When I follow the "Verify my email address" link from the last sent email
     Then my email address should be verified
 
+  Scenario: with mandatory email verification, a new user cannot use the pod until they verify
+    Given the podmin requires email verification
+    And I am on the new user registration page
+    When I fill in the new user form
+    And I press "Create account"
+    And I go to the stream page
+    Then I should be on the verify email page
+    When I press "Resend verification email"
+    Then I should see "Verification email sent"
+    And I should have 2 email delivery
+    When I follow the "Verify my email address" link from the last sent email
+    And I go to the stream page
+    Then I should be on the stream page
+
   Scenario: registrations are closed, user is informed
     Given the registrations are closed
     When I am on the new user registration page

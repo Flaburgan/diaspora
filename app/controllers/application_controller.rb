@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :set_diaspora_header
   before_action :mobile_switch
+  before_action :require_verified_email
   before_action :gon_set_current_user
   before_action :gon_set_appconfig
   before_action :gon_set_preloads
@@ -132,6 +133,12 @@ class ApplicationController < ActionController::Base
     else
       stream_path
     end
+  end
+
+  def require_verified_email
+    return unless AppConfig.settings.require_email_verification? && user_signed_in?
+
+    redirect_to verify_email_path unless current_user.email_verified?
   end
 
   def gon_set_appconfig

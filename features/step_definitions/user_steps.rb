@@ -148,8 +148,8 @@ When /^I post a limited status with the text "([^\"]*)"$/ do |text|
 end
 
 And /^I follow the "([^\"]*)" link from the last sent email$/ do |link_text|
-  email_text = Devise.mailer.deliveries.first.body.to_s
-  email_text = Devise.mailer.deliveries.first.html_part.body.raw_source if email_text.blank?
+  email_text = Devise.mailer.deliveries.last.body.to_s
+  email_text = Devise.mailer.deliveries.last.html_part.body.raw_source if email_text.blank?
   doc = Nokogiri("<div>" + email_text + "</div>")
 
   links = doc.css("a")

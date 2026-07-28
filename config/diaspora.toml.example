@@ -262,6 +262,11 @@
 ## (or commented out) to enable the first registration (you).
 #enable_registrations = true
 
+## Require email verification (default=false)
+## When enabled, users cannot use their account until they have verified
+## their email address by following the link in the welcome email.
+#require_email_verification = false
+
 ## Show local posts stream (default="disabled")
 ## If any other setting than disabled local public posts
 ## created on this pod can be shown.

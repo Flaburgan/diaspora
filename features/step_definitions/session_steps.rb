@@ -79,6 +79,10 @@ Given /^the registrations are closed$/ do
   AppConfig.settings.enable_registrations = false
 end
 
+Given /^the podmin requires email verification$/ do
+  AppConfig.settings.require_email_verification = true
+end
+
 Given /^the podmin contact address is "([^"]*)"$/ do |address|
   AppConfig.admins.podmin_email = address
 end
