@@ -1267,6 +1267,7 @@ en:
       receive_notifications: "Receive notifications when:"
       in_app_notifications: "in-app"
       email_notifications: "by email"
+      email_notifications_disabled: "E-mail notifications are not available"
       started_sharing: "someone starts sharing with you"
       someone_reported: "someone sends a report"
       mentioned: "you are mentioned in a post"

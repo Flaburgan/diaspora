@@ -12,6 +12,11 @@
   [type="checkbox"]:checked ~ i {
     color: $black;
   }
+
+  [type="checkbox"][disabled] ~ i {
+    cursor: not-allowed;
+    opacity: .5;
+  }
 }
 
 .notification-text {

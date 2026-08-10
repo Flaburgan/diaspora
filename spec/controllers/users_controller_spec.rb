@@ -341,6 +341,31 @@ describe UsersController, :type => :controller do
       expect(assigns[:email_prefs]["mentioned"][:mail]).to be false
       expect(assigns[:email_prefs]["mentioned"][:in_app]).to be true
     end
+
+    it "displays all notification settings with disabled email checkboxes when mail is disabled" do
+      AppConfig.mail.enable = false
+      get :edit, params: {id: @user.id}
+      doc = Nokogiri::HTML(response.body)
+
+      in_app_checkbox = doc.at_css('input[type="checkbox"][name="user[email_preferences][mentioned][in_app]"]')
+      expect(in_app_checkbox["disabled"]).to be_nil
+
+      mail_checkbox = doc.at_css('input[type="checkbox"][name="user[email_preferences][mentioned][mail]"]')
+      expect(mail_checkbox["disabled"]).to be_present
+      expect(
+        doc.at_css('label[for="user_email_preferences_mentioned_mail"]')["title"]
+      ).to eq(I18n.t("users.edit.email_notifications_disabled"))
+    end
+
+    it "displays enabled email checkboxes when mail is enabled" do
+      AppConfig.mail.enable = true
+      get :edit, params: {id: @user.id}
+      doc = Nokogiri::HTML(response.body)
+
+      mail_checkbox = doc.at_css('input[type="checkbox"][name="user[email_preferences][mentioned][mail]"]')
+      expect(mail_checkbox["disabled"]).to be_nil
+      expect(doc.at_css('label[for="user_email_preferences_mentioned_mail"]')["title"]).to be_nil
+    end
   end
 
   describe '#destroy' do

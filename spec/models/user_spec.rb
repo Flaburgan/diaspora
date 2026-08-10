@@ -499,7 +499,7 @@ describe User, type: :model do
     it "still sets new prefs to false on update" do
       alice.disable_mail = true
       expect {
-        alice.update_user_preferences({"mentioned" => "false"})
+        alice.update_user_preferences({"mentioned" => {"mail" => "true", "in_app" => "true"}})
       }.to change(alice.user_preferences, :count).by(@pref_count)
       expect(alice.reload.disable_mail).to be false
     end

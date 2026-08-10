@@ -186,11 +186,12 @@ class User < ApplicationRecord
     end
 
     pref_hash.keys.each do |key|
-      email_enabled = pref_hash[key]["mail"] == "false"
-      in_app_enabled = pref_hash[key]["in_app"] == "false"
+      attributes = {in_app_enabled: pref_hash[key]["in_app"] == "false"}
+      # the mail column is not rendered when AppConfig.mail.enable? is false
+      attributes[:email_enabled] = pref_hash[key]["mail"] == "false" if pref_hash[key].key?("mail")
       user_preferences
-        .find_or_create_by(email_type: key)
-        .update(email_enabled: email_enabled, in_app_enabled: in_app_enabled)
+        .find_or_create_by(email_type: key) {|pref| pref.email_enabled = true }
+        .update(attributes)
     end
   end
 
