@@ -7,7 +7,7 @@ module Notifications
       commentable_author = comment.commentable.author
 
       return unless commentable_author.local? && actor != commentable_author
-      return if mention_notification_exists?(comment, commentable_author)
+      return if Notifications::CommentOnPost.mention_notification_exists?(comment, commentable_author)
 
       recipient = commentable_author.owner
       Notifications::CommentOnPost

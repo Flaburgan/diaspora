@@ -595,30 +595,6 @@ describe User, type: :model do
     end
   end
 
-  describe "#mail" do
-    it "enqueues a mail job" do
-      alice.disable_mail = false
-      alice.save
-
-      expect(Mail::StartedSharingWorker).to receive(:perform_async).with(alice.id, "contactrequestid").once
-      alice.mail(Mail::StartedSharingWorker, alice.id, "contactrequestid")
-    end
-
-    it "does not enqueue a mail job if the correct corresponding job has a preference entry" do
-      alice.user_preferences.create(email_type: "started_sharing")
-      expect(Mail::StartedSharingWorker).not_to receive(:perform_async)
-      alice.mail(Mail::StartedSharingWorker, alice.id, "contactrequestid")
-    end
-
-    it "does not send a mail if disable_mail is set to true" do
-      alice.disable_mail = true
-      alice.save
-      alice.reload
-      expect(Mail::StartedSharingWorker).not_to receive(:perform_async)
-      alice.mail(Mail::StartedSharingWorker, alice.id, "contactrequestid")
-    end
-  end
-
   context "likes" do
     before do
       alices_aspect = alice.aspects.where(name: "generic").first

@@ -8,7 +8,8 @@ module Notifications
       recipient_ids = commentable.participants.local.where.not(id: [commentable.author_id, actor.id]).pluck(:owner_id)
 
       User.where(id: recipient_ids).find_each do |recipient|
-        next if recipient.is_shareable_hidden?(commentable) || mention_notification_exists?(comment, recipient.person)
+        next if recipient.is_shareable_hidden?(commentable) ||
+          Notifications::AlsoCommented.mention_notification_exists?(comment, recipient.person)
 
         Notifications::AlsoCommented
           .concatenate_or_create(recipient, commentable, actor)

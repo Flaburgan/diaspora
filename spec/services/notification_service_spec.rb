@@ -74,6 +74,30 @@ describe NotificationService do
     end
   end
 
+  describe "#mail" do
+    it "enqueues a mail job" do
+      alice.disable_mail = false
+      alice.save
+
+      expect(Mail::StartedSharingWorker).to receive(:perform_async).with(alice.id, "contactrequestid").once
+      NotificationService.new(alice).mail(Mail::StartedSharingWorker, alice.id, "contactrequestid")
+    end
+
+    it "does not enqueue a mail job if the correct corresponding job has a preference entry" do
+      alice.user_preferences.create(email_type: "started_sharing")
+      expect(Mail::StartedSharingWorker).not_to receive(:perform_async)
+      NotificationService.new(alice).mail(Mail::StartedSharingWorker, alice.id, "contactrequestid")
+    end
+
+    it "does not send a mail if disable_mail is set to true" do
+      alice.disable_mail = true
+      alice.save
+      alice.reload
+      expect(Mail::StartedSharingWorker).not_to receive(:perform_async)
+      NotificationService.new(alice).mail(Mail::StartedSharingWorker, alice.id, "contactrequestid")
+    end
+  end
+
   describe "query methods" do
     before do
       @post = alice.post(
