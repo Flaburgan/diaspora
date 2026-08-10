@@ -64,8 +64,8 @@ describe Notifications::AlsoCommentedService do
 
     context "when user disabled in app notification" do
       before do
-        bob.user_preferences.create(
-          email_type:     "also_commented",
+        bob.notification_settings.create(
+          type:           "also_commented",
           email_enabled:  true,
           in_app_enabled: false
         )

@@ -29,8 +29,8 @@ describe Notifications::StartedSharingService do
 
     context "when user disabled in app notification" do
       before do
-        alice.user_preferences.create(
-          email_type:     "started_sharing",
+        alice.notification_settings.create(
+          type:           "started_sharing",
           email_enabled:  true,
           in_app_enabled: false
         )

@@ -20,8 +20,8 @@ describe Notifications::ContactsBirthdayService do
 
     context "when user disabled in app notification" do
       before do
-        alice.user_preferences.create(
-          email_type:     "contacts_birthday",
+        alice.notification_settings.create(
+          type:           "contacts_birthday",
           email_enabled:  true,
           in_app_enabled: false
         )

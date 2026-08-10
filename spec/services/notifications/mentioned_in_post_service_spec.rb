@@ -51,8 +51,8 @@ describe Notifications::MentionedInPostService do
 
     context "when user disabled in app notification" do
       before do
-        bob.user_preferences.create(
-          email_type:     "mentioned",
+        bob.notification_settings.create(
+          type:           "mentioned",
           email_enabled:  true,
           in_app_enabled: false
         )
