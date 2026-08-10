@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Notifications::StartedSharing, type: :model do
+describe Notifications::StartedSharingService do
   let(:contact) { alice.contact_for(bob.person) }
   let(:started_sharing_notification) { Notifications::StartedSharing.new(recipient: alice) }
 
@@ -10,22 +10,19 @@ describe Notifications::StartedSharing, type: :model do
         alice, bob.person, bob.person
       ).and_return(started_sharing_notification)
 
-      Notifications::StartedSharing.notify(contact, [])
+      Notifications::StartedSharingService.notify(contact, [])
     end
 
     it "sends an email to the contacted user" do
-      allow(Notifications::StartedSharing).to receive(:create_notification).and_return(started_sharing_notification)
-      expect(alice).to receive(:mail).with(Mail::StartedSharingWorker, alice.id, bob.person.id, bob.person.id)
+      expect(Mail::StartedSharingWorker).to receive(:perform_async).with(alice.id, bob.person.id, bob.person.id)
 
-      Notifications::StartedSharing.notify(contact, [])
+      Notifications::StartedSharingService.notify(contact, [])
     end
 
-    it "does not notify if the sender of the contact is ignored" do
+    it "does not create a notification if the sender of the contact is ignored" do
       alice.blocks.create(person: contact.person)
 
-      expect_any_instance_of(Notifications::StartedSharing).not_to receive(:email_the_user)
-
-      Notifications::StartedSharing.notify(contact, [])
+      Notifications::StartedSharingService.notify(contact, [])
 
       expect(Notifications::StartedSharing.where(target: bob.person)).not_to exist
     end
@@ -34,14 +31,15 @@ describe Notifications::StartedSharing, type: :model do
       before do
         alice.user_preferences.create(
           email_type:     "started_sharing",
+          email_enabled:  true,
           in_app_enabled: false
         )
       end
 
-      it "does not notify" do
-        expect_any_instance_of(Notifications::StartedSharing).not_to receive(:email_the_user)
+      it "does not create a notification but still sends the email" do
+        expect(Mail::StartedSharingWorker).to receive(:perform_async).with(alice.id, bob.person.id, bob.person.id)
 
-        Notifications::StartedSharing.notify(contact, [])
+        Notifications::StartedSharingService.notify(contact, [])
 
         expect(Notifications::StartedSharing.where(target: bob.person)).not_to exist
       end
