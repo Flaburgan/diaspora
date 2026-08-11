@@ -449,16 +449,16 @@ describe User, type: :model do
       expect {
         alice.update_notification_settings(
           "mentioned"         => {
-            "email"  => "false",
-            "in_app" => "false"
+            "email"  => "true",
+            "in_app" => "true"
           },
           "contacts_birthday" => {
-            "email"  => "false",
-            "in_app" => "false"
+            "email"  => "true",
+            "in_app" => "true"
           },
           "private_message"   => {
-            "email"  => "true",
-            "in_app" => "false"
+            "email"  => "false",
+            "in_app" => "true"
           }
         )
       }.to change(alice.notification_settings, :count).by(3)

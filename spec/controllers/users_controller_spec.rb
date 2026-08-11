@@ -254,8 +254,8 @@ describe UsersController, :type => :controller do
               user: {
                 notification_settings: {
                   type => {
-                    in_app: "true",
-                    email:  "true"
+                    in_app: "false",
+                    email:  "false"
                   }
                 }
               }
@@ -280,8 +280,8 @@ describe UsersController, :type => :controller do
               user: {
                 notification_settings: {
                   type => {
-                    in_app: "false",
-                    email:  "false"
+                    in_app: "true",
+                    email:  "true"
                   }
                 }
               }

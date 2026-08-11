@@ -124,6 +124,8 @@
           = t(".receive_notifications")
         = form_for "user", url: edit_user_path, html: {method: :put} do |f|
           = f.fields_for :notification_settings do |type|
+            -# checkbox values must be strings: a boolean false unchecked_value makes
+            -# Rails omit the hidden field, so unchecking would submit nothing
             .notification-settings
               .icon-cell
                 = t(".in_app_notifications")
@@ -140,7 +142,7 @@
                         {checked: notification_settings["someone_reported"][:email],
                          name: "user[notification_settings][someone_reported][email]",
                          disabled: !AppConfig.mail.enable?},
-                        false, true
+                        "true", "false"
                     %i.entypo-mail
 
                 .notification-text
@@ -151,7 +153,7 @@
                   = type.check_box :started_sharing_in_app,
                     {checked: notification_settings["started_sharing"][:in_app],
                      name: "user[notification_settings][started_sharing][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -161,7 +163,7 @@
                     {checked: notification_settings["started_sharing"][:email],
                      name: "user[notification_settings][started_sharing][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -172,7 +174,7 @@
                   = type.check_box :mentioned_in_app,
                     {checked: notification_settings["mentioned"][:in_app],
                      name: "user[notification_settings][mentioned][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -182,7 +184,7 @@
                     {checked: notification_settings["mentioned"][:email],
                      name: "user[notification_settings][mentioned][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -193,7 +195,7 @@
                   = type.check_box :mentioned_in_comment_in_app,
                     {checked: notification_settings["mentioned_in_comment"][:in_app],
                      name: "user[notification_settings][mentioned_in_comment][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -203,7 +205,7 @@
                     {checked: notification_settings["mentioned_in_comment"][:email],
                       name: "user[notification_settings][mentioned_in_comment][email]",
                       disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -214,7 +216,7 @@
                   = type.check_box :liked_in_app,
                     {checked: notification_settings["liked"][:in_app],
                      name: "user[notification_settings][liked][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -224,7 +226,7 @@
                     {checked: notification_settings["liked"][:email],
                      name: "user[notification_settings][liked][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -235,7 +237,7 @@
                   = type.check_box :liked_comment_in_app,
                     {checked: notification_settings["liked_comment"][:in_app],
                      name: "user[notification_settings][liked_comment][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -245,7 +247,7 @@
                     {checked: notification_settings["liked_comment"][:email],
                      name: "user[notification_settings][liked_comment][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -256,7 +258,7 @@
                   = type.check_box :reshared_in_app,
                     {checked: notification_settings["reshared"][:in_app],
                      name: "user[notification_settings][reshared][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -266,7 +268,7 @@
                     {checked: notification_settings["reshared"][:email],
                      name: "user[notification_settings][reshared][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -277,7 +279,7 @@
                   = type.check_box :comment_on_post_in_app,
                     {checked: notification_settings["comment_on_post"][:in_app],
                      name: "user[notification_settings][comment_on_post][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -287,7 +289,7 @@
                     {checked: notification_settings["comment_on_post"][:email],
                      name: "user[notification_settings][comment_on_post][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -298,7 +300,7 @@
                   = type.check_box :also_commented_in_app,
                     {checked: notification_settings["also_commented"][:in_app],
                      name: "user[notification_settings][also_commented][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -308,7 +310,7 @@
                     {checked: notification_settings["also_commented"][:email],
                      name: "user[notification_settings][also_commented][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -324,7 +326,7 @@
                     {checked: notification_settings["private_message"][:email],
                      name: "user[notification_settings][private_message][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
@@ -335,7 +337,7 @@
                   = type.check_box :contacts_birthday_in_app,
                     {checked: notification_settings["contacts_birthday"][:in_app],
                      name: "user[notification_settings][contacts_birthday][in_app]"},
-                    false, true
+                    "true", "false"
                   %i.entypo-bell
 
               .icon-cell
@@ -345,7 +347,7 @@
                     {checked: notification_settings["contacts_birthday"][:email],
                      name: "user[notification_settings][contacts_birthday][email]",
                      disabled: !AppConfig.mail.enable?},
-                    false, true
+                    "true", "false"
                   %i.entypo-mail
 
               .notification-text
