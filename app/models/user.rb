@@ -177,14 +177,6 @@ class User < ApplicationRecord
   end
 
   def update_notification_settings(pref_hash)
-    if self.disable_mail
-      NotificationSetting::VALID_NOTIFICATION_TYPES.each do |type|
-        notification_settings.find_or_create_by(type: type).update(email_enabled: false)
-      end
-      self.disable_mail = false
-      self.save
-    end
-
     pref_hash.keys.each do |key|
       attributes = {in_app_enabled: pref_hash[key]["in_app"] == "false"}
       # the email column is not rendered when AppConfig.mail.enable? is false

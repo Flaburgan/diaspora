@@ -445,10 +445,6 @@ describe User, type: :model do
   end
 
   describe "update_notification_settings" do
-    before do
-      @pref_count = NotificationSetting::VALID_NOTIFICATION_TYPES.count
-    end
-
     it "creates records for notification preferences" do
       expect {
         alice.update_notification_settings(
@@ -487,21 +483,6 @@ describe User, type: :model do
         email_enabled:  false,
         in_app_enabled: true
       )
-    end
-
-    it "unsets disable mail and makes the right amount of prefs" do
-      alice.disable_mail = true
-      expect {
-        alice.update_notification_settings({})
-      }.to change(alice.notification_settings, :count).by(@pref_count)
-    end
-
-    it "still sets new prefs to false on update" do
-      alice.disable_mail = true
-      expect {
-        alice.update_notification_settings({"mentioned" => {"email" => "true", "in_app" => "true"}})
-      }.to change(alice.notification_settings, :count).by(@pref_count)
-      expect(alice.reload.disable_mail).to be false
     end
   end
 
